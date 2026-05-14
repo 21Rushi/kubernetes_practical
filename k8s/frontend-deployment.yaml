@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-frontend
+  template:
+    metadata:
+      labels:
+        app: flask-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: flask-frontend
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
